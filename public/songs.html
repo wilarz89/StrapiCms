@@ -1,0 +1,29 @@
+<div>
+<H2>The songs </H2>
+<div id="songs">
+
+</div>
+
+</div>
+<script>
+    const displaySongs = async ()=>{
+       const res = await fetch('songs')
+       const songs =  await res.json() 
+
+       console.log("Display songs",songs)
+       const container = document.querySelector('#songs')
+       container.innerHTML =""
+       songs.array.forEach(songs => {
+           const title = document.createElement('h3')
+           title.innerText=songs.title
+           container.appendChild(title)
+
+           const content = document.createElement('div')
+           content.innerText=songs.content
+           container.appendChild(content)
+           
+       });
+
+    }
+    displaySongs()
+</script>
